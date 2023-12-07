@@ -5,4 +5,5 @@ Rails.application.routes.draw do
   # root "articles#index"
 
   resources :publishers, only: [:index, :new, :create, :edit, :update]
+  resources :articles, only: [:index, :show]
 end

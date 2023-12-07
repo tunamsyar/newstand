@@ -1,0 +1,14 @@
+.container
+  - if @articles.present?
+    .row
+      - @articles.each do |article|
+        .col-md-4
+          .card
+            img.card-img-top(src=article.image_url alt=article.title)
+            .card-body
+              h5.card-title = article.title
+              p.card-text Published at: #{article.published_at}
+  - else
+    .row
+      .col-md-12
+        h1 Slow news day, huh?

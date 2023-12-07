@@ -4,6 +4,8 @@ class Publisher < ApplicationRecord
 
   enum language: { "english": 0, "malay": 1 }
 
+  has_many :articles
+
   def self.language_options
     languages.map { |k, _v| [k.titleize, k] }
   end
