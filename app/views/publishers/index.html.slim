@@ -1,0 +1,21 @@
+.container
+  h2 Publishers
+
+  table.table.table-responsive
+    thead
+      tr
+        th Name
+        th Language
+        th URL
+        th Created At
+        th
+    tbody
+      - @publishers.each do |publisher|
+        tr
+          td= publisher.name
+          td= publisher.language.titleize
+          td= publisher.rss_url
+          td= publisher.created_at
+          td= link_to 'Edit', edit_publisher_path(publisher)
+
+
