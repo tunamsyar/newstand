@@ -90,7 +90,6 @@ module BeritaHarian::Object
     def body_with_inline
       @json["body_with_inline"]
     end
-
   end
 end
 
