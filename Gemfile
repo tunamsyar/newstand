@@ -16,6 +16,7 @@ gem "cocoon"
 gem "sidekiq"
 gem "sidekiq-cron"
 gem "kaminari"
+gem "ransack"
 
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
