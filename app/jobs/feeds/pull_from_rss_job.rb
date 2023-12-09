@@ -5,7 +5,7 @@ module Feeds
 
     def perform
       FeedMethod.rss.find_each do |feed_method|
-        # ServiceToCallRss.new(feed_method).call
+        Feeds::PullFromSources.call(feed_method)
       end
     end
   end

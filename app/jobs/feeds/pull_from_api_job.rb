@@ -5,7 +5,7 @@ module Feeds
 
     def perform
       FeedMethod.api.find_each do |feed_method|
-        Feeds::PullFromApi.call(feed_method)
+        Feeds::PullFromSources.call(feed_method)
       end
     end
   end

@@ -1,5 +1,5 @@
 module Feeds
-  class PullFromApi
+  class PullFromSources
     def self.call(feed_method)
       new(feed_method).call
     end
