@@ -39,6 +39,16 @@ class PublishersController < ApplicationController
     end
   end
 
+  def invoke_pull
+    @publisher = publisher
+    @publisher.feed_methods.each do |feed_method|
+      Feeds::PullBasedOnFeedMethodJob.perform_later(feed_method)
+    end
+
+    flash[:success] = "Sent to queue"
+    redirect_to publishers_path
+  end
+
   private
 
   def publisher_params

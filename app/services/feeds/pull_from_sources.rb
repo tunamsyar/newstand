@@ -31,6 +31,10 @@ module Feeds
       @_url ||= feed_method.source_url
     end
 
+    def source_method
+      @_source_method ||= feed_method.pull_method
+    end
+
     def publisher_name
       @_publisher_name ||= publisher.name
     end
@@ -39,8 +43,16 @@ module Feeds
       @_library_name ||= publisher_name.split.map(&:capitalize).join
     end
 
+    def method_module
+      @_method_module ||= if source_method == 'rss'
+                            'RssFeed'
+                          else
+                            library_name
+                          end
+    end
+
     def retriever_class_name
-      @_retriever_class_name ||= "#{library_name}::Service::NewsRetriever"
+      @_retriever_class_name ||= "#{method_module}::Service::NewsRetriever"
     end
   end
 end

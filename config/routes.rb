@@ -9,6 +9,11 @@ Rails.application.routes.draw do
 
   mount Sidekiq::Web => '/sidekiq'
 
-  resources :publishers, only: [:index, :new, :show, :create, :edit, :update]
+  resources :publishers, only: [:index, :new, :show, :create, :edit, :update] do
+    member do
+      get :invoke_pull
+    end
+  end
+
   resources :articles, only: [:index, :show]
 end

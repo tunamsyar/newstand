@@ -1,4 +1,4 @@
-module Utusan::Object
+module RssFeed::Object
   class Article
     def initialize(rss_item)
       @rss_item = rss_item

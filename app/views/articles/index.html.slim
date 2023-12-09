@@ -9,7 +9,7 @@
               img.card-img-top.fixed-image(src=article.image_url alt=article.title)
               .card-body
                 h5.card-title = article.title
-                p.card-text Published at: #{article.published_at}
+                p.card-text Published at: #{article.published_at.in_time_zone('Asia/Kuala_Lumpur').strftime('%d/%m/%Y %I:%M %p')}
                 p.card-text Author: #{article.author}
                 p.card-text = article.publisher.name
     - else
