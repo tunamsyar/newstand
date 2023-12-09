@@ -16,8 +16,13 @@ class PublishersController < ApplicationController
     end
   end
 
+  def show
+    @publisher = publisher
+  end
+
   def new
     @publisher = publisher
+    publisher.feed_methods.build
   end
 
   def edit
@@ -37,7 +42,11 @@ class PublishersController < ApplicationController
   private
 
   def publisher_params
-    params.require(:publisher).permit(:name, :rss_url, :language)
+    params.require(:publisher)
+          .permit(:name,
+                  :language,
+                  feed_methods_attributes: [:source_url, :pull_method]
+          )
   end
 
   def publisher

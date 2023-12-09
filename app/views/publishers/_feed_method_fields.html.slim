@@ -1,0 +1,10 @@
+.nested-fields
+  .form-group
+    = f.label :source_url
+    = f.text_field :source_url, class: "form-control", style: "margin-bottom: 10px;"
+
+  .form-group
+    = f.label :pull_method
+    = f.select :pull_method, FeedMethod.pull_method_options, { include_blank: false }, class: "form-control", style: "margin-bottom: 10px;"
+
+  = link_to_remove_association "Remove Method", f

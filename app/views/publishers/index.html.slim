@@ -6,7 +6,6 @@
       tr
         th Name
         th Language
-        th URL
         th Created At
         th
     tbody
@@ -14,7 +13,6 @@
         tr
           td= publisher.name
           td= publisher.language.titleize
-          td= publisher.rss_url
           td= publisher.created_at
           td= link_to 'Edit', edit_publisher_path(publisher)
 

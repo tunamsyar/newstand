@@ -1,3 +1,4 @@
+h3 Publisher
 = simple_form_for publisher do |f|
   .form-group
     = f.label :name
@@ -7,8 +8,12 @@
     = f.label :language
     = f.select :language, Publisher.language_options, { include_blank: false }, class: "form-control", style: "margin-bottom: 10px;"
 
-  .form-group
-    = f.label :rss_url
-    = f.text_field :rss_url, class: "form-control", style: "margin-bottom: 10px;"
+  #feed-method.pt-3
+    h3 Feed Methods
+    = f.simple_fields_for :feed_methods do |feed|
+      = render 'feed_method_fields', f: feed
+
+    .links
+      = link_to_add_association 'Add Feed Methods', f, :feed_methods
 
   = f.button :submit, class: "btn btn-primary"

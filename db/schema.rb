@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_12_07_150555) do
+ActiveRecord::Schema[7.0].define(version: 2023_12_09_085952) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -53,10 +53,18 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_07_150555) do
     t.index ["publisher_id"], name: "index_articles_on_publisher_id"
   end
 
+  create_table "feed_methods", force: :cascade do |t|
+    t.bigint "publisher_id", null: false
+    t.string "source_url", null: false
+    t.integer "pull_method", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["publisher_id"], name: "index_feed_methods_on_publisher_id"
+  end
+
   create_table "publishers", force: :cascade do |t|
     t.string "name", null: false
     t.integer "language", default: 0, null: false
-    t.string "rss_url", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

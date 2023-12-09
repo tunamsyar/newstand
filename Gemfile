@@ -7,6 +7,12 @@ ruby "3.1.0"
 gem "rails", "~> 7.0.8"
 gem "httparty"
 gem 'rss'
+gem "nokogiri"
+gem "capybara"
+gem "watir"
+gem "webdrivers"
+gem "selenium-webdriver", "~> 4.11.0"
+gem "cocoon"
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
@@ -74,7 +80,7 @@ end
 
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
-  gem "capybara"
-  gem "selenium-webdriver"
+  # gem "capybara"
+  # gem "selenium-webdriver"
 
 end

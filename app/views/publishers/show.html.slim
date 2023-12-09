@@ -1,0 +1,23 @@
+.container
+  .row
+    .col-md-6.offset-md-3
+      .card.mt-5
+        .card-body
+          h1 Publisher Details
+          hr
+          .form-group
+            label Name:
+            p= @publisher.name
+          .form-group
+            label Language:
+            p= @publisher.language
+          hr
+          h2 Feed Methods
+          ul.list-group.mt-3
+            - @publisher.feed_methods.each do |feed_method|
+                .form-group
+                  label Source:
+                  p= feed_method.source_url
+                .form-group
+                  label Pull Method:
+                  p= feed_method.pull_method
