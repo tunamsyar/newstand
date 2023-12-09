@@ -1,24 +1,17 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Newsstand
 
-Things you may want to cover:
+A simple enough news stand where user can add in their favorite news publishers' RSS or APIs
+and have their own personal newsstand delivered to their browser.
 
-* Ruby version
+### Tech stack
+- Ruby 3.1.0
+- Rails 7
+- Sidekiq
+- Redis
+- Postgresql
+- Bootstrap
 
-* System dependencies
+![alt text](https://github.com/tunamsyar/newstand/blob/master/public/sample.png?raw=true)
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
