@@ -1,0 +1,14 @@
+pull_from_api_job:
+  cron: "0 * * * *" # Every hour at minute 0
+  class: "Feeds::PullFromApiJob"
+  queue: default
+
+pull_from_rss_job:
+  cron: "0 * * * *" # Every hour at minute 0
+  class: "Feeds::PullFromRssJob"
+  queue: default
+
+pull_from_scraper_job:
+  cron: "0 * * * *" # Every hour at minute 0
+  class: "Feeds::PullFromScraperJob"
+  queue: default

@@ -13,6 +13,9 @@ gem "watir"
 gem "webdrivers"
 gem "selenium-webdriver", "~> 4.11.0"
 gem "cocoon"
+gem "sidekiq"
+gem "sidekiq-cron"
+
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
