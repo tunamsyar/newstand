@@ -9,7 +9,8 @@ module BeritaHarian::Object
         title: title,
         original_url: url,
         author: author,
-        published_at: Time.at(created)
+        published_at: Time.at(created),
+        original_image_url: image_url
       }
     end
 
@@ -85,6 +86,10 @@ module BeritaHarian::Object
 
     def body
       @json["body"]
+    end
+
+    def image_url
+      @json["field_image_listing_featured_v2"] || 'https://placehold.co/600x400.png'
     end
 
     def body_with_inline

@@ -10,6 +10,7 @@ module Utusan::Object
         author: author,
         published_at: published_at,
         original_url: url,
+        original_image_url: image_url
       }
     end
 
@@ -31,6 +32,10 @@ module Utusan::Object
 
     def content
       @rss_item.content_encoded
+    end
+
+    def image_url
+      @rss_item.description.match(/src=\"(.*?)\"/)&.captures&.first || 'https://placehold.co/600x400.png'
     end
   end
 end

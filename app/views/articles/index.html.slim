@@ -1,14 +1,18 @@
+
 .container
-  - if @articles.present?
-    .row
-      - @articles.each do |article|
-        .col-md-4
-          .card
-            img.card-img-top(src=article.image_url alt=article.title)
-            .card-body
-              h5.card-title = article.title
-              p.card-text Published at: #{article.published_at}
-  - else
-    .row
-      .col-md-12
-        h1 Slow news day, huh?
+  .card-deck
+    - if @articles.present?
+      .row
+        - @articles.each do |article|
+          .col-md-4
+            .card.m-2
+              img.card-img-top.fixed-image(src=article.image_url alt=article.title)
+              .card-body
+                h5.card-title = article.title
+                p.card-text Published at: #{article.published_at}
+                p.card-text Author: #{article.author}
+                p.card-text = article.publisher.name
+    - else
+      .row
+        .col-md-12
+          h1 Slow news day, huh?

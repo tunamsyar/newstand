@@ -9,6 +9,8 @@ class Article < ApplicationRecord
   has_one_attached :image
 
   def image_url
+    return original_image_url if original_image_url.present?
+
     if image.attached?
       image.url
     else
