@@ -1,7 +1,10 @@
-
-.container
+.container.text-center
   .card-deck
     - if @articles.present?
+      .row
+        .col-md-12
+          .clearfix
+            = paginate @articles, window: 4
       .row
         - @articles.each do |article|
           .col-md-4
@@ -12,6 +15,8 @@
                 p.card-text Published at: #{article.published_at.in_time_zone('Asia/Kuala_Lumpur').strftime('%d/%m/%Y %I:%M %p')}
                 p.card-text Author: #{article.author}
                 p.card-text = article.publisher.name
+                .card-footer
+                  = link_to 'Original Article', article.original_url, class: 'btn btn-primary', target: '_blank'
     - else
       .row
         .col-md-12
