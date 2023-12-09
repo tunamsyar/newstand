@@ -45,7 +45,7 @@ class PublishersController < ApplicationController
     params.require(:publisher)
           .permit(:name,
                   :language,
-                  feed_methods_attributes: [:source_url, :pull_method]
+                  feed_methods_attributes: [:id, :source_url, :pull_method, :_destroy]
           )
   end
 

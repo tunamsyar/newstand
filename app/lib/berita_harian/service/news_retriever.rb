@@ -1,5 +1,5 @@
 module BeritaHarian::Service
-  class FeedRetriever
+  class NewsRetriever
     def self.call(url)
       new(url).call
     end
@@ -11,7 +11,7 @@ module BeritaHarian::Service
     def call
       response = ExternalApi::Get.call(@url)
 
-      BeritaHarian::Converter.convert_to_object(response)
+      BeritaHarian::Converter.convert_to_params(response)
     rescue => e
       RaiseError.call(e)
     end
