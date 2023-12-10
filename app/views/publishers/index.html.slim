@@ -1,5 +1,6 @@
 .container
   h2 Publishers
+  = link_to 'New Publisher', new_publisher_path, class: 'btn btn-primary'
 
   table.table.table-responsive
     thead
@@ -13,7 +14,7 @@
         tr
           td= publisher.name
           td= publisher.language.titleize
-          td= publisher.created_at
+          td= publisher.created_at.in_time_zone('Asia/Kuala_Lumpur')
           td
             = link_to 'Edit', edit_publisher_path(publisher)
             br

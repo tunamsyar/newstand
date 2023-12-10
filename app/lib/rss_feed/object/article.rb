@@ -1,5 +1,7 @@
 module RssFeed::Object
   class Article
+    attr_reader :rss_item
+
     def initialize(rss_item)
       @rss_item = rss_item
     end
@@ -15,27 +17,35 @@ module RssFeed::Object
     end
 
     def url
-      @rss_item.link
+      rss_item.xpath('link').text
     end
 
     def title
-      @rss_item.title
+      rss_item.xpath('title').text
     end
 
     def author
-      @rss_item.dc_creator || "Utusan Malaysia"
+      rss_item.xpath('dc:creator').text
     end
 
     def published_at
-      @rss_item.pubDate
-    end
-
-    def content
-      @rss_item.content_encoded
+      rss_item.xpath('pubDate').text
     end
 
     def image_url
-      @rss_item.description.match(/src=\"(.*?)\"/)&.captures&.first || 'https://placehold.co/600x400.png'
+      extracted_url = if rss_item.xpath('media:content', namespaces).attr('url').present?
+        rss_item.xpath('media:content', namespaces).attr('url')&.text
+      elsif rss_item.xpath('content:encoded').present?
+        rss_item.xpath('content:encoded').last.text.match(/src=\"(.*?)\"/)&.captures&.first
+      end
+
+      extracted_url || 'https://placehold.co/600x400.png'
+    end
+
+    private
+
+    def namespaces
+      @_namespaces ||= { 'media' => 'http://search.yahoo.com/mrss/' }
     end
   end
 end

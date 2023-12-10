@@ -1,34 +1,37 @@
 .container.text-center
   .card-deck
     .row
-    .col-md-12
-    - if @articles.present?
-      = search_form_for @q, url: articles_path, method: :get do |f|
-        .form-group.mb-2
+      .col-md-12
+        h2 Articles
+    .row
+      .col-md-12
+        - if @articles.present?
+          = search_form_for @q, url: articles_path, method: :get do |f|
+            .form-group.mb-2
+              .row
+                .col-md-2
+                  p Language:
+                .col-md-4
+                  = f.select :publisher_language_eq, [["All", nil], ['English',0], ['Malay',1]], {} , class: 'form-control'
+                .col-md-4
+                  = f.submit 'Search', class: 'btn btn-primary'
           .row
-            .col-md-2
-              p Language:
-            .col-md-4
-              = f.select :publisher_language_eq, [["All", nil], ['English',0], ['Malay',1]], {} , class: 'form-control'
-            .col-md-4
-              = f.submit 'Search', class: 'btn btn-primary'
-      .row
-        .col-md-12
-          .clearfix
-            = paginate @articles, window: 4
-      .row
-        - @articles.each do |article|
-          .col-md-4
-            .card.m-2
-              img.card-img-top.fixed-image(src=article.image_url alt=article.title)
-              .card-body
-                h5.card-title = article.title
-                p.card-text Published at: #{article.published_at.in_time_zone('Asia/Kuala_Lumpur').strftime('%d/%m/%Y %I:%M %p')}
-                p.card-text Author: #{article.author}
-                p.card-text = article.publisher.name
-                .card-footer
-                  = link_to 'Original Article', article.original_url, class: 'btn btn-primary', target: '_blank'
-    - else
-      .row
-        .col-md-12
-          h1 Slow news day, huh?
+            .col-md-12
+              .clearfix
+                = paginate @articles, window: 4
+          .row
+            - @articles.each do |article|
+              .col-md-4
+                .card.m-2
+                  img.card-img-top.fixed-image(src=article.image_url alt=article.title)
+                  .card-body
+                    h5.card-title = article.title
+                    p.card-text Published at: #{article.published_at.in_time_zone('Asia/Kuala_Lumpur').strftime('%d/%m/%Y %I:%M %p')}
+                    p.card-text Author: #{article.author}
+                    p.card-text = article.publisher.name
+                    .card-footer
+                      = link_to 'Original Article', article.original_url, class: 'btn btn-primary', target: '_blank'
+        - else
+          .row
+            .col-md-12
+              h1 Slow news day, huh?

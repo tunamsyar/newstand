@@ -13,6 +13,7 @@ module RssFeed::Service
 
       RssFeed::Converter.convert_to_params(rss_feed)
     rescue => e
+      puts e.message
       RaiseError.call(e)
     end
   end

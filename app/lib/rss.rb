@@ -7,10 +7,32 @@ class Rss
   end
 
   def get_feed
-    feed = RSS::Parser.parse(URI.open(@url), false).items
+    if items.present?
+      items
+    else
+      []
+    end
+  rescue StandardError => e
+    puts "Error occurred: #{e.message}"
+  end
 
-    return feed if feed.present?
+  private
 
-    []
+  attr_reader :url
+
+  def open(url)
+    URI.open(url)
+  end
+
+  def xml_document
+    @_xml_document ||= open(url)
+  end
+
+  def parsed_xml
+    @_parsed_xml ||= Nokogiri::XML(xml_document)
+  end
+
+  def items
+    @_items ||= parsed_xml.xpath('//item')
   end
 end
