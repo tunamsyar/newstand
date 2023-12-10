@@ -12,3 +12,8 @@ pull_from_scraper_job:
   cron: "0 * * * *" # Every hour at minute 0
   class: "Feeds::PullFromScraperJob"
   queue: default
+
+retry_error_record_job:
+  cron: "*/10 * * * *" # Every 10 minutes
+  class: "Utitlities::RetryErrorRecordJob"
+  queue: default

@@ -14,6 +14,7 @@ class Rss
     end
   rescue StandardError => e
     puts "Error occurred: #{e.message}"
+    []
   end
 
   private

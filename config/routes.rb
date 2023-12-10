@@ -16,4 +16,10 @@ Rails.application.routes.draw do
   end
 
   resources :articles, only: [:index, :show]
+
+  resources :error_records, only: [:index, :show] do
+    member do
+      post :retry
+    end
+  end
 end

@@ -15,6 +15,7 @@ gem "selenium-webdriver", "~> 4.11.0"
 gem "cocoon"
 gem "sidekiq"
 gem "sidekiq-cron"
+gem 'sidekiq-failures'
 gem "kaminari"
 gem "ransack"
 

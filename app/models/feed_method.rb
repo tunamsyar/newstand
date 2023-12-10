@@ -1,6 +1,8 @@
 class FeedMethod < ApplicationRecord
   belongs_to :publisher
 
+  has_many :error_records, as: :errorable
+
   validates :source_url, presence: true
 
   enum pull_method: { "rss": 0, "api": 1, "scrape": 2 }

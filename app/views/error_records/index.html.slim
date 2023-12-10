@@ -1,0 +1,28 @@
+
+h1 Error Records
+
+table.table.table-striped
+  thead
+    tr
+      th ID
+      th Function Name
+      th Message
+      th Object
+      th Resolved
+      th Resolved At
+      th Created At
+      th
+  tbody
+    - @error_records.each do |error_record|
+      tr
+        td = error_record.id
+        td = error_record.function_name
+        td = error_record.message
+        td = error_record.errorable_display
+        td = error_record.is_resolved
+        td = error_record.resolved_at
+        td = error_record.created_at
+        td
+          = link_to 'Show', error_record_path(error_record)
+          br
+          = link_to 'Retry', retry_error_record_path(error_record), method: :post, data: { confirm: 'Are you sure?' }

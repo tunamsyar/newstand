@@ -2,3 +2,4 @@
 queues:
   - default
   - articles
+  - error_resolver

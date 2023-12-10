@@ -15,8 +15,17 @@ module Feeds
         article_objects: article_objects,
         publisher: publisher
       )
+
+      true
     rescue StandardError => e
       puts "Error occurred: #{e.message}"
+
+      Utilities::ErrorRecorder.call(
+        function_name: 'Feeds::PullFromSources',
+        message: e.message,
+        object: feed_method
+      )
+
       false
     end
 

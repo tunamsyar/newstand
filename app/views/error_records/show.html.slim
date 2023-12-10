@@ -1,0 +1,22 @@
+
+h1 Error Record Details
+
+p
+  strong Error Message:
+  = @error_record.message
+
+p
+  strong Error Function Name:
+  = @error_record.function_name
+
+p
+  strong Error Timestamp:
+  = @error_record.created_at
+
+p
+  strong Error Resolved:
+  = @error_record.is_resolved
+
+p
+  strong Error Object:
+  = @error_record.errorable_display

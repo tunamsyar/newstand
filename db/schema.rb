@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_12_09_132347) do
+ActiveRecord::Schema[7.0].define(version: 2023_12_10_163003) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -52,6 +52,18 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_09_132347) do
     t.datetime "updated_at", null: false
     t.string "original_image_url"
     t.index ["publisher_id"], name: "index_articles_on_publisher_id"
+  end
+
+  create_table "error_records", force: :cascade do |t|
+    t.string "function_name"
+    t.string "message"
+    t.string "errorable_type"
+    t.bigint "errorable_id"
+    t.boolean "is_resolved", default: false, null: false
+    t.datetime "resolved_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["errorable_type", "errorable_id"], name: "index_error_records_on_errorable"
   end
 
   create_table "feed_methods", force: :cascade do |t|
