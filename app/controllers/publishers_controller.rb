@@ -41,7 +41,7 @@ class PublishersController < ApplicationController
 
   def invoke_pull
     @publisher = publisher
-    @publisher.feed_methods.each do |feed_method|
+    @publisher.feed_methods.find_each do |feed_method|
       Feeds::PullBasedOnFeedMethodJob.perform_later(feed_method)
     end
 
@@ -60,6 +60,6 @@ class PublishersController < ApplicationController
   end
 
   def publisher
-    @publisher ||= Publisher.find_by(id: params[:id]) || Publisher.new
+    @publisher ||= Publisher.includes(:feed_methods).find_by(id: params[:id]) || Publisher.new
   end
 end

@@ -14,10 +14,9 @@ module Articles
         article_objects.each do |article|
           publisher.articles.find_or_create_by!(article)
         rescue ActiveRecord::Invalid => e
-          # log e
+          puts "Error occurred: #{e.message}"
         end
       end
-
     end
 
     private

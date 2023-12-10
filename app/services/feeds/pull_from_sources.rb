@@ -16,7 +16,8 @@ module Feeds
         publisher: publisher
       )
     rescue StandardError => e
-      # alert error
+      puts "Error occurred: #{e.message}"
+      false
     end
 
     private
